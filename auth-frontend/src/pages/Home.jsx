@@ -4,6 +4,8 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import app from "../components/firebaseConfig";
 import "../App.css"
 import FileUpload from '../components/fileUpload';
+import { FaGithub } from 'react-icons/fa';
+
 
 const db = getFirestore(app);
 
@@ -42,14 +44,27 @@ const Home = () => {
   return (
     <>
 
-    <div className="home rounded-md flex flex-col justify-center items-center w-[25rem] m-auto gap-[2rem] mt-[5rem] py-[2rem]">
-      <h1 className='font-bold text-3xl'>Home Page</h1>
-      <div className=' flex flex-col gap-2'>
-        <h2>User Name: <span className='font-bold'>{userData.name || "N/A"}</span></h2>
-        <p>User Email: <span className='font-bold'>{userData.email || "N/A"}</span></p>
-      </div>
-      <button className='bg-red-400 text-white rounded-3xl py-1 px-4 ' onClick={handleLogout}>Logout</button>
-    </div>
+<div className="flex flex-row justify-between items-center w-full px-10 py-4 bg-gray-800 text-white">
+  <h1 className="font-bold text-2xl">Logo</h1>
+  <div className="flex flex-row gap-6">
+    <h2>User Name: <span className="font-bold">{userData.name || "N/A"}</span></h2>
+    <p>User Email: <span className="font-bold">{userData.email || "N/A"}</span></p>
+  </div>
+  <div className="flex items-center gap-4">
+    <button className="bg-red-400 text-white rounded-3xl py-2 px-6" onClick={handleLogout}>
+      Logout
+    </button>
+    <a 
+      href="https://github.com/surbhisinghal1234" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="text-white hover:text-gray-400 text-4xl"
+    >
+      <FaGithub  />
+    </a>
+  </div>
+</div>
+
     <FileUpload/>
     </>
   );

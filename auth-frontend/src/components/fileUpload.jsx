@@ -1,4 +1,4 @@
-// src/components/FileUpload.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ const FileUpload = () => {
     if (selectedFile) {
       setFile(selectedFile);
       setFileType(selectedFile.type);
-      setPreviewUrl(URL.createObjectURL(selectedFile)); // Preview before upload
+      setPreviewUrl(URL.createObjectURL(selectedFile)); 
     }
   };
 
@@ -55,17 +55,33 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
-      <h2>File Upload</h2>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
-      {previewUrl && (
-        <div>
-          <h3>Preview:</h3>
-          {renderPreview()}
-        </div>
-      )}
+  
+    <>
+    <div className="file-upload-box bg-gray-300 p-6 rounded-lg shadow-md w-[25rem] m-auto mt-10">
+  <h2 className="text-2xl font-bold mb-4 text-gray-800">File Upload</h2>
+  <input 
+    type="file" 
+    onChange={handleFileChange} 
+    className="mb-4 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+  />
+  <button 
+    onClick={handleUpload} 
+    className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-200"
+  >
+    Upload
+  </button>
+
+  {previewUrl && (
+    <div className="mt-6">
+      <h3 className="text-xl font-semibold mb-2 text-gray-800">Preview:</h3>
+      <div className="border border-gray-300 p-4 rounded-md bg-white">
+        {renderPreview()}
+      </div>
     </div>
+  )}
+</div>
+
+    </>
   );
 };
 
